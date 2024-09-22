@@ -14,6 +14,8 @@ https://google.github.io/styleguide/javaguide.html
 Code from lab done with student Jafar Jarrar was implemented in this project:  
 - https://github.com/class5thsept/lab-intro-classes-maven/tree/main
 - https://rebelsky.cs.grinnell.edu/Courses/CSC207/2024Fa/labs/intro-classes.html
+Reference for extra methods:
+- https://www.geekforgeeks.org/biginteger-class-in-java/
 
 REPOSITORY
 https://github.com/class5thsept/calculator-project
