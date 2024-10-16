@@ -59,74 +59,112 @@ public class BigFraction {
   // | Methods |
   // +---------+
 
+  /**
+   * Get the denominator of a fraction.
+   * 
+   * @return BigInteger.
+   */
   public BigInteger denominator() {
     return this.denom;
   } // denominator()
 
+  /**
+   * Get the numerator of a fraction.
+   * 
+   * @return BigInteger.
+   */
   public BigInteger numerator() {
     return this.num;
   } // numerator()
 
-
+  /**
+   * Adds two fractions.
+   *
+   * @param val
+   *   The fraction to be added.
+   * 
+   * @return BigFraction.
+   */
   public BigFraction add(BigFraction val) {
-    this.num = val.denominator().multiply(this.numerator())
+    BigInteger newNumerator = val.denominator().multiply(this.numerator())
         .add(val.numerator().multiply(this.denominator()));
 
-    this.denom = val.denominator().multiply(this.denominator());
+    BigInteger newDenominator = val.denominator().multiply(this.denominator());
 
-    BigInteger commonDivisor = this.denom.gcd(this.num);
-    this.num = this.num.divide(commonDivisor);
-    this.denom = this.denom.divide(commonDivisor);
+    BigInteger commonDivisor = newDenominator.gcd(newNumerator);
 
-    return this;
+    newNumerator = newNumerator.divide(commonDivisor);
+    newDenominator = newDenominator.divide(commonDivisor);
 
+    return new BigFraction(newNumerator, newDenominator);
   } // add(BigFraction)
 
+  /**
+   * Subtracts two fractions.
+   *
+   * @param val
+   *   The fraction to be subtracted.
+   * 
+   * @return BigFraction.
+   */
   public BigFraction subtract(BigFraction val) {
-    this.num = val.numerator().multiply(this.denominator())
-        .subtract(val.denominator().multiply(this.numerator()));
+    BigInteger newNumerator = this.numerator().multiply(val.denominator())
+        .subtract(this.denominator().multiply(val.numerator()));
 
-    this.denom = val.denominator().multiply(this.denominator());
+    BigInteger newDenominator = val.denominator().multiply(this.denominator());
 
-    BigInteger commonDivisor = this.denom.gcd(this.num);
-    this.num = this.num.divide(commonDivisor);
-    this.denom = this.denom.divide(commonDivisor);
+    BigInteger commonDivisor = newDenominator.gcd(newNumerator);
+    newNumerator = newNumerator.divide(commonDivisor);
+    newDenominator = newDenominator.divide(commonDivisor);
 
-    return this;
-
+    return new BigFraction(newNumerator, newDenominator);
   } // subtract(BigFraction)
 
+  /**
+   * Multiplies two fractions.
+   *
+   * @param val
+   *   The fraction to be multiplied by.
+   * 
+   * @return BigFraction.
+   */
   public BigFraction multiply(BigFraction val) {
-    this.num = val.numerator().multiply(this.numerator());
+    BigInteger newNumerator = val.numerator().multiply(this.numerator());
+    BigInteger newDenominator = val.denominator().multiply(this.denominator());
 
-    this.denom = val.denominator().multiply(this.denominator());
+    BigInteger commonDivisor = newDenominator.gcd(newNumerator);
+    newNumerator = newNumerator.divide(commonDivisor);
+    newDenominator = newDenominator.divide(commonDivisor);
 
-    BigInteger commonDivisor = this.denom.gcd(this.num);
-    this.num = this.num.divide(commonDivisor);
-    this.denom = this.denom.divide(commonDivisor);
-
-    return this;
+    return new BigFraction(newNumerator, newDenominator);
   } // multiply(BigFraction)
 
+  /**
+   * Divides two fractions.
+   *
+   * @param val
+   *   The fraction to be divided by.
+   * 
+   * @return BigFraction.
+   */
   public BigFraction divide(BigFraction val) {
-    BigInteger resultNumerator = this.numerator();
-    BigInteger resultDenominator = this.denominator();
+    BigInteger newNumerator = this.num.multiply(val.denominator());
+    BigInteger newDenominator = this.denom.multiply(val.numerator());
 
-    resultNumerator = resultNumerator.multiply(val.denominator());
+    BigInteger commonDivisor = newNumerator.gcd(newDenominator);
+    newNumerator = newNumerator.divide(commonDivisor);
+    newDenominator = newDenominator.divide(commonDivisor);
 
-    resultDenominator = resultDenominator.multiply(val.numerator());
-
-    BigInteger commonDivisor = resultNumerator.gcd(resultDenominator);
-    this.num = resultNumerator.divide(commonDivisor);
-    this.denom = resultDenominator.divide(commonDivisor);
-
-    return new BigFraction(this.num, this.denom);
+    return new BigFraction(newNumerator, newDenominator);
   } // divide(BigFraction)
 
   public String toString() {
     if (this.num.equals(BigInteger.ZERO)) {
       return "0";
-    } // if 
+    } // if
+    if (this.denom.equals(BigInteger.ONE)) {
+      return this.num + "";
+    } // if
     return this.num + "/" + this.denom;
   } // toString()
-}
+} // divide (BigFraction val)
