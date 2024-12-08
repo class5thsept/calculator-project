@@ -11,6 +11,10 @@ import edu.grinnell.csc207.util.BFRegisterSet;
  * @author Leonardo Alves Nunes
  */
 public class InteractiveCalculator {
+  /**
+   * UI for the interactive calculator.
+   * @param args
+   */
   public static void main(String[] args) {
     Scanner eyes = new Scanner(System.in);
     BFRegisterSet registers = new BFRegisterSet();
@@ -57,7 +61,7 @@ public class InteractiveCalculator {
             nextElement = registers.get(element.charAt(0));
           } else {
             nextElement = new BigFraction(element);
-          }
+          } // if
 
           switch (operator) {
             case 1:

@@ -11,16 +11,26 @@ public class BFCalculator {
   // +--------+-------------------------------------------------------
   // | Fields |
   // +--------+
+  /**
+   * Stores the result of the previous operation.
+   */
   BigFraction lastValue;
 
   // +--------------+-------------------------------------------------
   // | Constructors |
   // +--------------+
 
-  public BFCalculator(BigFraction lastValue) {
-    this.lastValue = lastValue;
+  /**
+   * Creates BFCalculator object that stores the last result.
+   * @param lastVal
+   */
+  public BFCalculator(BigFraction lastVal) {
+    this.lastValue = lastVal;
   } // BFCalculator(BigFraction)
 
+  /**
+   * Creates a BFCalculator in case this is the first use.
+   */
   public BFCalculator() {
     this.lastValue = new BigFraction(0, 1);
   } // BFCalculator
@@ -28,21 +38,21 @@ public class BFCalculator {
   // +---------+------------------------------------------------------
   // | Methods |
   // +---------+
+
   /**
    * Get the current value in the calculator.
-   * 
-   * @return BigFraction.
+   *
+   * @return returs the last value.
    */
   public BigFraction get() {
     return this.lastValue;
   } // get(BigFraction)
 
   /**
-   * Add the fraction to a new one
+   * Add the fraction to a new one.
    *
    * @param val The fraction to be added
-   * 
-   * @return void.
+   *
    */
   public void add(BigFraction val) {
     BigFraction result = lastValue.add(val);
@@ -54,8 +64,6 @@ public class BFCalculator {
    * Subtract the fraction to a new one.
    *
    * @param val The fraction to be suctracted.
-   * 
-   * @return void.
    */
   public void subtract(BigFraction val) {
     BigFraction result = lastValue.subtract(val);
@@ -67,8 +75,6 @@ public class BFCalculator {
    * Multiply the fraction to a new one.
    *
    * @param val The fraction to be multiplied.
-   * 
-   * @return void.
    */
   public void multiply(BigFraction val) {
     BigFraction result = val.multiply(lastValue);
@@ -77,11 +83,10 @@ public class BFCalculator {
   } // multiply(BigFraction)
 
   /**
-   * Divide the fraction to a new one
+   * Divide the fraction to a new one.
    *
    * @param val The fraction to be divided
-   * 
-   * @return void.
+   *
    */
   public void divide(BigFraction val) {
     BigFraction result = lastValue.divide(val);
@@ -89,6 +94,9 @@ public class BFCalculator {
     printHelper(result);
   } // divide(BigFraction)
 
+  /**
+   * Resets the last value.
+   */
   public void clear() {
     this.lastValue.num = BigInteger.valueOf(0);
     this.lastValue.denom = BigInteger.valueOf(1);
@@ -98,8 +106,7 @@ public class BFCalculator {
    * Helper frunction that prints values calculates by the operations.
    *
    * @param result The result of the operation
-   * 
-   * @return void.
+   *
    */
   static void printHelper(BigFraction result) {
     if (result.denom.equals(BigInteger.valueOf(1))) {

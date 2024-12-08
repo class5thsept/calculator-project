@@ -10,6 +10,10 @@ import edu.grinnell.csc207.util.BigFraction;
  * @author Leonardo Alves Nunes
  */
 public class QuickCalculator {
+  /**
+   * Runs the UI for quick calculator which uses single line.
+   * @param args
+   */
   public static void main(String[] args) {
     BFRegisterSet registers = new BFRegisterSet();
     BFCalculator calculator = null;

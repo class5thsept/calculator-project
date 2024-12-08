@@ -9,11 +9,17 @@ public class BFRegisterSet {
   // +--------+-------------------------------------------------------
   // | Fields |
   // +--------+
+  /**
+   * Store a value for each letter of the alphabet.
+   */
   BigFraction[] stores = new BigFraction[26];
 
   // +--------------+-------------------------------------------------
   // | Constructors |
   // +--------------+
+  /**
+   * Initializes the Register to store 1/1.
+   */
   public BFRegisterSet() {
     this.stores[0] = new BigFraction("1/1");
   } // BFRegisterSet()
@@ -27,11 +33,9 @@ public class BFRegisterSet {
    *
    * @param register
    *   letter(location) to be stored.
-   * 
+   *
    * @param val
    *   value to be stored in the register.
-   * 
-   * @return void.
    */
   public void store(char register, BigFraction val) {
     stores[(int) register - 97] = val;
@@ -42,7 +46,7 @@ public class BFRegisterSet {
    *
    * @param register
    *   letter(location) to be searched.
-   * 
+   *
    * @return BigFraction.
    */
   public BigFraction get(char register) {
